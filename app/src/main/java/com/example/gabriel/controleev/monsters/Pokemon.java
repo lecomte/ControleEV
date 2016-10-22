@@ -5,63 +5,62 @@ package com.example.gabriel.controleev.monsters;
  */
 
 public class Pokemon extends PokedexEntry {
-    private int attack, defense, spAttack, spDefense, speed, hp;
+    private Atributos atributos;
 
     public Pokemon(String name, String type, int dexId, int attack, int defense, int spAttack, int spDefense, int speed, int hp) {
         super(name, type, dexId);
-        this.attack = attack;
-        this.defense = defense;
-        this.spAttack = spAttack;
-        this.spDefense = spDefense;
-        this.speed = speed;
-        this.hp = hp;
+        atributos = new Atributos(attack, defense, spAttack, spDefense, speed, hp);
     }
 
     public int getAttack() {
-        return attack;
+        return atributos.getAttack();
     }
 
     public void setAttack(int attack) {
-        this.attack = attack;
+        atributos.setAttack(attack);
     }
 
     public int getDefense() {
-        return defense;
+        return atributos.getDefense();
     }
 
     public void setDefense(int defense) {
-        this.defense = defense;
+        atributos.setDefense(defense);
     }
 
     public int getSpAttack() {
-        return spAttack;
+        return atributos.getSpAttack();
     }
 
     public void setSpAttack(int spAttack) {
-        this.spAttack = spAttack;
+        atributos.setSpAttack(spAttack);
     }
 
     public int getSpDefense() {
-        return spDefense;
+        return atributos.getSpDefense();
     }
 
     public void setSpDefense(int spDefense) {
-        this.spDefense = spDefense;
+        atributos.setSpDefense(spDefense);
     }
 
     public int getSpeed() {
-        return speed;
+        return atributos.getSpeed();
     }
 
     public void setSpeed(int speed) {
-        this.speed = speed;
+        atributos.setSpeed(speed);
     }
 
     public int getHp() {
-        return hp;
+        return atributos.getHp();
     }
 
     public void setHp(int hp) {
-        this.hp = hp;
+        atributos.setHp(hp);
+    }
+
+    public String toString() {
+        return super.toString() + "\n" + super.getType() + "\n" + atributos.toString();
     }
 }
