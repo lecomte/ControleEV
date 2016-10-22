@@ -13,4 +13,20 @@ public class PokedexEntry {
         this.type = type;
         this.dexId = dexId;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getDexId() {
+        return dexId;
+    }
+
+    public String toString() {
+        return String.valueOf(this.dexId) + " - " + this.name;
+    }
 }

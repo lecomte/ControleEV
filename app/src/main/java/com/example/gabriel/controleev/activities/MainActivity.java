@@ -20,15 +20,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tentaAbrir();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("Controle de EVs");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tentaAbrir();
                 iniciaAddPokemon(view);
             }
         });
@@ -84,5 +84,6 @@ public class MainActivity extends AppCompatActivity {
             throw sqle;
 
         }
+        myDbHelper.close();
     }
 }

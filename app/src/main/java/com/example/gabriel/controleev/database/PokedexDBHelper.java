@@ -1,16 +1,21 @@
 package com.example.gabriel.controleev.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import com.example.gabriel.controleev.monsters.PokedexEntry;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by gabriel on 21/10/16.
@@ -22,7 +27,7 @@ public class PokedexDBHelper extends SQLiteOpenHelper {
         return DB_NAME;
     }
 
-    private static String DB_NAME = "pokedex";
+    private static String DB_NAME = "pokedex.sqlite";
 
     private SQLiteDatabase myDataBase;
 
@@ -133,5 +138,39 @@ public class PokedexDBHelper extends SQLiteOpenHelper {
 
         super.close();
 
+    }
+
+    public ArrayList<PokedexEntry> getAllPokemon() {
+        ArrayList<PokedexEntry> lista = new ArrayList<PokedexEntry>();
+        Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id < 1000",null);
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                PokedexEntry entry = new PokedexEntry(cursor.getString(cursor.getColumnIndex("identifier")),
+                        cursor.getString(cursor.getColumnIndex("type")),cursor.getInt(cursor.getColumnIndex("_id")));
+                lista.add(entry);
+                cursor.moveToNext();
+            }
+        }
+        return lista;
+    }
+
+    public PokedexEntry getPokemon(int id) {
+        Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id = " + String.valueOf(id),null);
+        if (cursor.moveToFirst()) {
+            return new PokedexEntry(cursor.getString(cursor.getColumnIndex("identifier")),
+                    cursor.getString(cursor.getColumnIndex("type")),cursor.getInt(cursor.getColumnIndex("_id")));
+        }
+        return null;
+    }
+
+    public void mostraTabelas(Context context) {
+        Cursor c = myDataBase.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+
+        if (c.moveToFirst()) {
+            while ( !c.isAfterLast() ) {
+                Toast.makeText(context, "Table Name=> "+c.getString(0), Toast.LENGTH_LONG).show();
+                c.moveToNext();
+            }
+        }
     }
 }

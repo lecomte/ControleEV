@@ -27,6 +27,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gabriel.controleev.activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.CadastroPokemon"
+            android:parentActivityName=".activities.AddPokemon" />
     </application>
 
 </manifest>
