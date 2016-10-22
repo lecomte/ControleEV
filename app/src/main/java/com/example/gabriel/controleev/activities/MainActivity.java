@@ -9,11 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.gabriel.controleev.R;
+import com.example.gabriel.controleev.database.LocalDataDBHelper;
 import com.example.gabriel.controleev.database.PokedexDBHelper;
+import com.example.gabriel.controleev.monsters.Pokemon;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +39,23 @@ public class MainActivity extends AppCompatActivity {
                 iniciaAddPokemon(view);
             }
         });
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
+        LocalDataDBHelper helper = new LocalDataDBHelper(this);
+        ArrayList<Pokemon> lista = helper.getAllPokemon(helper.getReadableDatabase());
+        for (Pokemon p : lista) {
+            LinearLayout l = new LinearLayout(this);
+            l.setOrientation(LinearLayout.VERTICAL);
+            ImageView image = new ImageView(this);
+            int resId = MainActivity.this.getResources().getIdentifier("sprite" + String.valueOf(p.getDexId()), "drawable", MainActivity.this.getPackageName());
+            image.setImageResource(resId);
+            l.addView(image);
+            TextView text = new TextView(this);
+            text.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            text.setText(p.getNickname());
+            l.addView(text);
+            gridLayout.addView(l);
+        }
+
     }
 
     @Override
