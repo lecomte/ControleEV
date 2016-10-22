@@ -7,7 +7,13 @@ package com.example.gabriel.controleev.monsters;
 public class Pokemon extends PokedexEntry {
     private int attack, defense, spAttack, spDefense, speed, hp;
 
-    public Pokemon() {
-        super();
+    public Pokemon(String name, String type, int dexId, int attack, int defense, int spAttack, int spDefense, int speed, int hp) {
+        super(name, type, dexId);
+        this.attack = attack;
+        this.defense = defense;
+        this.spAttack = spAttack;
+        this.spDefense = spDefense;
+        this.speed = speed;
+        this.hp = hp;
     }
 }
