@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -31,14 +32,15 @@ public class AlteraPokemon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_altera_pokemon);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarAltera);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         int id = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
-        setTitle("Alterar Pokémon");
         LocalDataDBHelper helper = new LocalDataDBHelper(this);
         pokemon = helper.getPokemon(id, helper.getReadableDatabase());
         helper.close();
-        TextView name = (TextView) findViewById(R.id.pokemonNameAltera);
-        name.setText(pokemon.getNickname());
+        setTitle(pokemon.getNickname());
         TextView att = (TextView) findViewById(R.id.attackAltera);
         att.setText(String.valueOf(pokemon.getAttack()));
         TextView def = (TextView) findViewById(R.id.defenseAltera);

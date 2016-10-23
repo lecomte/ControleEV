@@ -42,7 +42,7 @@ public class AddPokemon extends AppCompatActivity {
         LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
         PokedexDBHelper helper = new PokedexDBHelper(this);
         helper.openDataBase();
-        ArrayList<PokedexEntry> lista = helper.getAllPokemon();
+        ArrayList<PokedexEntry> lista = helper.getAllPokemon(helper.getMyDataBase());
         for(final PokedexEntry pokedexEntry : lista) {
             LinearLayout l = CriaView.imprime(pokedexEntry, this);
             l.setClickable(true);
