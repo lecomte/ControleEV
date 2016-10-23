@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by gabriel on 21/10/16.
  */
 
-public class PokedexDBHelper extends SQLiteOpenHelper {
+public class PokedexDBHelper extends SQLiteOpenHelper implements ConsultaBanco {
 
     public static String getDbName() {
         return DB_NAME;
@@ -140,7 +140,7 @@ public class PokedexDBHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<PokedexEntry> getAllPokemon() {
+    public ArrayList<PokedexEntry> getAllPokemon(SQLiteDatabase myDataBase) {
         ArrayList<PokedexEntry> lista = new ArrayList<PokedexEntry>();
         Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id < 650",null);
         if (cursor.moveToFirst()) {
@@ -154,7 +154,7 @@ public class PokedexDBHelper extends SQLiteOpenHelper {
         return lista;
     }
 
-    public PokedexEntry getPokemon(int id) {
+    public PokedexEntry getPokemon(int id, SQLiteDatabase myDataBase) {
         Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id = " + String.valueOf(id),null);
         if (cursor.moveToFirst()) {
             return new PokedexEntry(cursor.getString(cursor.getColumnIndex("identifier")),
@@ -163,14 +163,7 @@ public class PokedexDBHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    public void mostraTabelas(Context context) {
-        Cursor c = myDataBase.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-
-        if (c.moveToFirst()) {
-            while ( !c.isAfterLast() ) {
-                Toast.makeText(context, "Table Name=> "+c.getString(0), Toast.LENGTH_LONG).show();
-                c.moveToNext();
-            }
-        }
+    public SQLiteDatabase getMyDataBase() {
+        return myDataBase;
     }
 }

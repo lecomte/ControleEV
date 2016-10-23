@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by gabriel on 22/10/16.
  */
 
-public class LocalDataDBHelper extends SQLiteOpenHelper {
+public class LocalDataDBHelper extends SQLiteOpenHelper implements ConsultaBanco {
     private static final int DATABASE_VERSION = 2;
     private static final String DATA_TABLE_NAME = "pokemon";
     private static final String KEY_NAME = "name";

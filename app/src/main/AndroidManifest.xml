@@ -29,9 +29,22 @@
         </activity>
         <activity
             android:name=".activities.CadastroPokemon"
-            android:parentActivityName=".activities.AddPokemon" />
-        <activity android:name=".activities.AlteraPokemon"
-            android:parentActivityName=".activities.MainActivity"></activity>
+            android:label="Escolha o Pokemon"
+            android:parentActivityName=".activities.AddPokemon"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gabriel.controleev.activities.AddPokemon" />
+        </activity>
+        <activity
+            android:name=".activities.AlteraPokemon"
+            android:label="Escolha o Pokemon"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gabriel.controleev.activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
