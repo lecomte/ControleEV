@@ -30,6 +30,8 @@
         <activity
             android:name=".activities.CadastroPokemon"
             android:parentActivityName=".activities.AddPokemon" />
+        <activity android:name=".activities.AlteraPokemon"
+            android:parentActivityName=".activities.MainActivity"></activity>
     </application>
 
 </manifest>

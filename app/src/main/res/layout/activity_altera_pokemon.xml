@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_altera_pokemon"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context="com.example.gabriel.controleev.activities.AlteraPokemon">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="29dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pokemonNameAltera"
+                android:textSize="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/spriteAltera"
+                android:layout_gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Espécie:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/especieAltera"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Attack:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3Altera"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:text="-"
+                    android:layout_width="30dp"
+                    android:id="@+id/decAtt"
+                    android:background="@drawable/roundedbutton"
+                    android:textSize="24sp"
+                    android:layout_height="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="4dp" />
+
+
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/attackAltera"
+                    android:text="0"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:text="+"
+                    android:id="@+id/incAtt"
+                    android:layout_weight="1"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@drawable/roundedbutton2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Defense:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/defenseAlteratit"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:text="-"
+                    android:layout_width="30dp"
+                    android:id="@+id/decDef"
+                    android:background="@drawable/roundedbutton"
+                    android:textSize="24sp"
+                    android:layout_height="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="4dp" />
+
+
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/defenseAltera"
+                    android:text="0"
+                    android:layout_alignLeft="@+id/pokemonName"
+                    android:layout_alignStart="@+id/pokemonName"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:text="+"
+                    android:id="@+id/incDef"
+
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@drawable/roundedbutton2"
+                    android:layout_marginLeft="4dp"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Sp. Attack:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView5Altera"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:text="-"
+                    android:layout_width="30dp"
+                    android:id="@+id/decSpAtt"
+                    android:background="@drawable/roundedbutton"
+                    android:textSize="24sp"
+                    android:layout_height="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="4dp" />
+
+
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/spAttackAltera"
+                    android:text="0"
+                    android:layout_alignLeft="@+id/pokemonName"
+                    android:layout_alignStart="@+id/pokemonName"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:text="+"
+                    android:id="@+id/incSpAtt"
+
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@drawable/roundedbutton2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Sp. Defense:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView6Altera"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:text="-"
+                    android:layout_width="30dp"
+                    android:id="@+id/decSpDef"
+                    android:background="@drawable/roundedbutton"
+                    android:textSize="24sp"
+                    android:layout_height="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="4dp" />
+
+
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/spDefenseAltera"
+                    android:text="0"
+                    android:layout_alignLeft="@+id/pokemonName"
+                    android:layout_alignStart="@+id/pokemonName"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:text="+"
+                    android:id="@+id/incSpDef"
+
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@drawable/roundedbutton2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Speed:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7Altera"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:text="-"
+                    android:layout_width="30dp"
+                    android:id="@+id/decSpe"
+                    android:background="@drawable/roundedbutton"
+                    android:textSize="24sp"
+                    android:layout_height="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="4dp" />
+
+
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/speedAltera"
+                    android:text="0"
+                    android:layout_alignLeft="@+id/pokemonName"
+                    android:layout_alignStart="@+id/pokemonName"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:text="+"
+                    android:id="@+id/incSpe"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@drawable/roundedbutton2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="HP:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView8Altera"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:text="-"
+                    android:layout_width="30dp"
+                    android:id="@+id/decHp"
+                    android:background="@drawable/roundedbutton"
+                    android:textSize="24sp"
+                    android:layout_height="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="4dp" />
+
+
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/hpAltera"
+                    android:text="0"
+                    android:layout_alignLeft="@+id/pokemonName"
+                    android:layout_alignStart="@+id/pokemonName"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:text="+"
+                    android:id="@+id/incHp"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:background="@drawable/roundedbutton2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

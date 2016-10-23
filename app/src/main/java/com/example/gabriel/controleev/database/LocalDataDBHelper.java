@@ -37,7 +37,8 @@ public class LocalDataDBHelper extends SQLiteOpenHelper {
                     KEY_SPATT + " INT, " +
                     KEY_SPDEF + " INT, " +
                     KEY_SPE + " INT, " +
-                    KEY_HP + " INT);";
+                    KEY_HP + " INT," +
+                    "_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);";
     private static final String DATABASE_NAME = "localdata";
 
     public LocalDataDBHelper(Context context) {
@@ -55,7 +56,7 @@ public class LocalDataDBHelper extends SQLiteOpenHelper {
     }
 
     public static void addPokemon(SQLiteDatabase db, Pokemon pokemon) {
-        db.execSQL("INSERT INTO " + DATA_TABLE_NAME +" VALUES ('"
+        db.execSQL("INSERT INTO " + DATA_TABLE_NAME +"(name,identifier,type,dexId,attack,defense,spAttack,spDefense,speed,hp) VALUES ('"
                 + pokemon.getNickname() + "','" + pokemon.getName() + "','" + pokemon.getType() + "'," + pokemon.getDexId() +
                 "," + pokemon.getAttack() + "," + pokemon.getDefense() + "," + pokemon.getSpAttack() + "," + pokemon.getSpDefense() +
                 "," + pokemon.getSpeed() + "," + pokemon.getHp() + ");");
@@ -68,13 +69,39 @@ public class LocalDataDBHelper extends SQLiteOpenHelper {
             while (cursor.isAfterLast() == false) {
                 Pokemon entry = new Pokemon(cursor.getString(cursor.getColumnIndex(KEY_IDENTIFIER)),
                         cursor.getString(cursor.getColumnIndex(KEY_TYPE)),cursor.getInt(cursor.getColumnIndex(KEY_DEX)), cursor.getString(cursor.getColumnIndex(KEY_NAME)), cursor.getInt(cursor.getColumnIndex(KEY_ATT)), cursor.getInt(cursor.getColumnIndex(KEY_DEF))
-                        , cursor.getInt(cursor.getColumnIndex(KEY_SPATT)), cursor.getInt(cursor.getColumnIndex(KEY_SPDEF)), cursor.getInt(cursor.getColumnIndex(KEY_SPE)), cursor.getInt(cursor.getColumnIndex(KEY_HP)));
+                        , cursor.getInt(cursor.getColumnIndex(KEY_SPATT)), cursor.getInt(cursor.getColumnIndex(KEY_SPDEF)), cursor.getInt(cursor.getColumnIndex(KEY_SPE)), cursor.getInt(cursor.getColumnIndex(KEY_HP)), cursor.getInt(cursor.getColumnIndex("_id")));
                 lista.add(entry);
                 cursor.moveToNext();
             }
         }
         cursor.close();
         return lista;
+    }
+
+    public Pokemon getPokemon(int id, SQLiteDatabase myDataBase) {
+        Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id = " + String.valueOf(id),null);
+        if (cursor.moveToFirst()) {
+                Pokemon entry = new Pokemon(cursor.getString(cursor.getColumnIndex(KEY_IDENTIFIER)),
+                        cursor.getString(cursor.getColumnIndex(KEY_TYPE)),cursor.getInt(cursor.getColumnIndex(KEY_DEX)), cursor.getString(cursor.getColumnIndex(KEY_NAME)), cursor.getInt(cursor.getColumnIndex(KEY_ATT)), cursor.getInt(cursor.getColumnIndex(KEY_DEF))
+                        , cursor.getInt(cursor.getColumnIndex(KEY_SPATT)), cursor.getInt(cursor.getColumnIndex(KEY_SPDEF)), cursor.getInt(cursor.getColumnIndex(KEY_SPE)), cursor.getInt(cursor.getColumnIndex(KEY_HP)), cursor.getInt(cursor.getColumnIndex("_id")));
+                return entry;
+        }
+        cursor.close();
+        return null;
+    }
+
+    public void updateStat(String key, int id, SQLiteDatabase db, int value) {
+        db.execSQL("UPDATE " + DATA_TABLE_NAME + " SET " + key + " = " + String.valueOf(value) + " WHERE _id = " + String.valueOf(id) + ";" );
+    }
+
+    public int getStat(String key,int id, SQLiteDatabase myDataBase) {
+        Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id = " + String.valueOf(id),null);
+        if (cursor.moveToFirst()) {
+            int stat = cursor.getInt(cursor.getColumnIndex(key));
+            return stat;
+        }
+        cursor.close();
+        return -1;
     }
 
 }

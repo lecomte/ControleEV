@@ -142,7 +142,7 @@ public class PokedexDBHelper extends SQLiteOpenHelper {
 
     public ArrayList<PokedexEntry> getAllPokemon() {
         ArrayList<PokedexEntry> lista = new ArrayList<PokedexEntry>();
-        Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id < 1000",null);
+        Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id < 650",null);
         if (cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
                 PokedexEntry entry = new PokedexEntry(cursor.getString(cursor.getColumnIndex("identifier")),

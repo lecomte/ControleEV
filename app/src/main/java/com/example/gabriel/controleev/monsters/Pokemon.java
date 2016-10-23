@@ -7,16 +7,24 @@ package com.example.gabriel.controleev.monsters;
 public class Pokemon extends PokedexEntry {
     private Atributos atributos;
     private String nickname;
+    private int id;
 
-    public Pokemon(String name, String type, int dexId, int attack, int defense, int spAttack, int spDefense, int speed, int hp) {
+    public Pokemon(String name, String type, int dexId, int attack, int defense, int spAttack, int spDefense, int speed, int hp, int id) {
         super(name, type, dexId);
         atributos = new Atributos(attack, defense, spAttack, spDefense, speed, hp);
+        this.nickname = name;
+        this.id = id;
     }
 
-    public Pokemon(String name, String type, int dexId, String nickname, int attack, int defense, int spAttack, int spDefense, int speed, int hp) {
+    public Pokemon(String name, String type, int dexId, String nickname, int attack, int defense, int spAttack, int spDefense, int speed, int hp, int id) {
         super(name, type, dexId);
         atributos = new Atributos(attack, defense, spAttack, spDefense, speed, hp);
         this.nickname = nickname;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getAttack() {
@@ -69,6 +77,10 @@ public class Pokemon extends PokedexEntry {
 
     public String toString() {
         return super.toString() + "\n" + super.getType() + "\n" + atributos.toString();
+    }
+
+    public int totalEVs() {
+        return atributos.getHp() + atributos.getSpeed() + atributos.getAttack() + atributos.getSpAttack() + atributos.getDefense() + atributos.getSpDefense();
     }
 
 
