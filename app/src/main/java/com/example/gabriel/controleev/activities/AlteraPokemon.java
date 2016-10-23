@@ -1,10 +1,13 @@
 package com.example.gabriel.controleev.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -234,6 +237,31 @@ public class AlteraPokemon extends AppCompatActivity {
                     t.setText(String.valueOf(helper.getStat(KEY_HP, p.getId(), helper.getReadableDatabase())));
                     helper.close();
                 }
+            }
+        });
+
+        ImageButton delete = (ImageButton) findViewById(R.id.deleteButton);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(AlteraPokemon.this);
+                builder.setMessage("Tem certeza que quer excluir " + p.getNickname() + "?")
+                        .setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        })
+                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(AlteraPokemon.this, MainActivity.class);
+                                LocalDataDBHelper helper = new LocalDataDBHelper(AlteraPokemon.this);
+                                helper.remove(p.getId(), helper.getWritableDatabase());
+                                helper.close();
+                                startActivity(intent);
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 

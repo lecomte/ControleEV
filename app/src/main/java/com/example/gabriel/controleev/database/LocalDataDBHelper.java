@@ -104,4 +104,8 @@ public class LocalDataDBHelper extends SQLiteOpenHelper {
         return -1;
     }
 
+    public void remove(int id, SQLiteDatabase db) {
+        db.execSQL("DELETE FROM " + DATA_TABLE_NAME + " WHERE _id = " + String.valueOf(id) + ";" );
+    }
+
 }

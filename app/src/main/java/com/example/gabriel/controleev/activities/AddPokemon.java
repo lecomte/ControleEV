@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.gabriel.controleev.R;
 import com.example.gabriel.controleev.database.PokedexDBHelper;
+import com.example.gabriel.controleev.monsters.CriaView;
 import com.example.gabriel.controleev.monsters.PokedexEntry;
 
 import java.io.IOException;
@@ -43,18 +44,15 @@ public class AddPokemon extends AppCompatActivity {
         helper.openDataBase();
         ArrayList<PokedexEntry> lista = helper.getAllPokemon();
         for(final PokedexEntry pokedexEntry : lista) {
-            TextView text = new TextView(AddPokemon.this);
-            text.setText(pokedexEntry.toString());
-            text.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, (int) (56 * metrics.density + 0.5f)));
-            text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
-            text.setPadding((int) (16 * metrics.density + 0.5f),(int) (13 * metrics.density + 0.5f),(int) (16 * metrics.density + 0.5f), 0);
-            text.setOnClickListener(new View.OnClickListener() {
+            LinearLayout l = CriaView.imprime(pokedexEntry, this);
+            l.setClickable(true);
+            l.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     enviaPokemon(view, pokedexEntry.getDexId());
                 }
             });
-            linearLayout1.addView(text);
+            linearLayout1.addView(l);
         }
         helper.close();
     }

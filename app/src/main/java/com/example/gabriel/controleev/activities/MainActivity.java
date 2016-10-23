@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.gabriel.controleev.R;
 import com.example.gabriel.controleev.database.LocalDataDBHelper;
 import com.example.gabriel.controleev.database.PokedexDBHelper;
+import com.example.gabriel.controleev.monsters.CriaView;
 import com.example.gabriel.controleev.monsters.Pokemon;
 
 import java.io.IOException;
@@ -49,20 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Pokemon> lista = helper.getAllPokemon(helper.getReadableDatabase());
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         for (final Pokemon p : lista) {
-            LinearLayout l = new LinearLayout(this);
-            l.setGravity(Gravity.CENTER);
-            l.setOrientation(LinearLayout.HORIZONTAL);
-            l.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, (int) (56 * metrics.density + 0.5f)));
-            ImageView image = new ImageView(this);
-            image.setLayoutParams(new FrameLayout.LayoutParams((int) (56 * metrics.density + 0.5f), (int) (56 * metrics.density + 0.5f)));
-            int resId = MainActivity.this.getResources().getIdentifier("sprite" + String.valueOf(p.getDexId()), "drawable", MainActivity.this.getPackageName());
-            image.setImageResource(resId);
-            l.addView(image);
-            TextView text = new TextView(this);
-            text.setGravity(Gravity.CENTER);
-            text.setText(p.getNickname());
-            text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-            l.addView(text);
+            LinearLayout l = CriaView.imprime(p, this);
             l.setClickable(true);
             l.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -4,7 +4,7 @@ package com.example.gabriel.controleev.monsters;
  * Created by gabriel on 21/10/16.
  */
 
-public class Pokemon extends PokedexEntry {
+public class Pokemon extends PokedexEntry implements MostraDados {
     private Atributos atributos;
     private String nickname;
     private int id;
@@ -75,14 +75,14 @@ public class Pokemon extends PokedexEntry {
         atributos.setHp(hp);
     }
 
+    @Override
     public String toString() {
-        return super.toString() + "\n" + super.getType() + "\n" + atributos.toString();
+        return nickname + " - " + String.format("%.2f", (float) this.totalEVs() * 100 / 510) + "%";
     }
 
     public int totalEVs() {
         return atributos.getHp() + atributos.getSpeed() + atributos.getAttack() + atributos.getSpAttack() + atributos.getDefense() + atributos.getSpDefense();
     }
-
 
     public String getNickname() {
         return nickname;

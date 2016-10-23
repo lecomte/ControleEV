@@ -4,7 +4,7 @@ package com.example.gabriel.controleev.monsters;
  * Created by gabriel on 21/10/16.
  */
 
-public class PokedexEntry {
+public class PokedexEntry implements MostraDados {
     private String name, type;
     private int dexId;
     private int resId;
@@ -29,12 +29,6 @@ public class PokedexEntry {
 
     public String toString() {
         return String.valueOf(this.dexId) + " - " + this.name;
-    }
-
-
-
-    public String toString(PokedexEntry pokedexEntry){
-        return pokedexEntry.toString();
     }
 
     public void setResId(int resId) {
