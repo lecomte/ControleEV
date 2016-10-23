@@ -26,12 +26,10 @@ public class PokedexEntry {
         return dexId;
     }
 
-    @Override
     public String toString() {
         return String.valueOf(this.dexId) + " - " + this.name;
     }
 
-    @Override
     public String toString(PokedexEntry pokedexEntry){
         return pokedexEntry.toString();
     }
