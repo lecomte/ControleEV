@@ -7,6 +7,7 @@ package com.example.gabriel.controleev.monsters;
 public class PokedexEntry {
     private String name, type;
     private int dexId;
+    private int resId;
 
     public PokedexEntry(String name, String type, int dexId) {
         this.name = name;
