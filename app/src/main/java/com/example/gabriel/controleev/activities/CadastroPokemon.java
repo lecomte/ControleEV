@@ -39,23 +39,22 @@ public class CadastroPokemon extends AppCompatActivity {
         final PokedexEntry pokedexEntry = helper.getPokemon(id);
         helper.close();
         pokedexEntry.setResId(CadastroPokemon.this.getResources().getIdentifier("sprite" + String.valueOf(id), "drawable", CadastroPokemon.this.getPackageName()));
-        pokemonName.setText(pokedexEntry.getName());
         sprite.setImageResource(pokedexEntry.getResId());
         Button concluir = (Button) findViewById(R.id.button);
+        final Pokemon pokemon = (Pokemon)pokedexEntry;
+        pokemon.setAttack(Integer.parseInt(pokemonAtt.getText().toString()));
+        pokemon.setDefense(Integer.parseInt(pokemonDef.getText().toString()));
+        pokemon.setSpAttack(Integer.parseInt(pokemonSpAtt.getText().toString()));
+        pokemon.setSpDefense(Integer.parseInt(pokemonSpDef.getText().toString()));
+        pokemon.setSpeed(Integer.parseInt(pokemonSpe.getText().toString()));
+        pokemon.setHp(Integer.parseInt(pokemonHp.getText().toString()));
+        if (!(pokemonNickName.getText().toString().equals("")))
+            pokemon.setNickname(pokemonNickName.getText().toString());
         concluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LocalDataDBHelper helper1 = new LocalDataDBHelper(CadastroPokemon.this);
-                if (pokemonNickName.getText().toString().equals(""))
-                salva(new Pokemon(pokemonName.getText().toString(), pokedexEntry.getType(), pokedexEntry.getDexId(),
-                        Integer.parseInt(pokemonAtt.getText().toString()),  Integer.parseInt(pokemonDef.getText().toString()),
-                        Integer.parseInt(pokemonSpAtt.getText().toString()), Integer.parseInt(pokemonSpDef.getText().toString()), Integer.parseInt(pokemonSpe.getText().toString()),
-                        Integer.parseInt(pokemonHp.getText().toString()), 0), helper1.getWritableDatabase());
-                else
-                    salva(new Pokemon(pokemonName.getText().toString(), pokedexEntry.getType(), pokedexEntry.getDexId(), pokemonNickName.getText().toString(),
-                            Integer.parseInt(pokemonAtt.getText().toString()),  Integer.parseInt(pokemonDef.getText().toString()),
-                            Integer.parseInt(pokemonSpAtt.getText().toString()), Integer.parseInt(pokemonSpDef.getText().toString()), Integer.parseInt(pokemonSpe.getText().toString()),
-                            Integer.parseInt(pokemonHp.getText().toString()), 0), helper1.getWritableDatabase());
+                salva(pokemon, helper1.getWritableDatabase());
                 helper1.close();
                 Intent intent = new Intent(CadastroPokemon.this, MainActivity.class);
                 startActivity(intent);
