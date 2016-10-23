@@ -30,7 +30,17 @@ public class PokedexEntry {
         return String.valueOf(this.dexId) + " - " + this.name;
     }
 
+
+
     public String toString(PokedexEntry pokedexEntry){
         return pokedexEntry.toString();
+    }
+
+    public void setResId(int resId) {
+        this.resId = resId;
+    }
+
+    public int getResId() {
+        return resId;
     }
 }
