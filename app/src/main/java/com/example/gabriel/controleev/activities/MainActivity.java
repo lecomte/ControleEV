@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tentaAbrir();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -94,31 +93,5 @@ public class MainActivity extends AppCompatActivity {
         Intent nextScreen = new Intent(this, AlteraPokemon.class);
         nextScreen.putExtra(EXTRA_MESSAGE, pokemon.getId());
         startActivity(nextScreen);
-    }
-
-    public void tentaAbrir() {
-        PokedexDBHelper myDbHelper;
-        myDbHelper = new PokedexDBHelper(this);
-
-        try {
-
-            myDbHelper.createDataBase();
-
-        } catch (IOException ioe) {
-
-            throw new Error("Unable to create database");
-
-        }
-
-        try {
-
-            myDbHelper.openDataBase();
-
-        }catch(SQLException sqle){
-
-            throw sqle;
-
-        }
-        myDbHelper.close();
     }
 }
