@@ -18,40 +18,21 @@ import com.example.gabriel.controleev.activities.MainActivity;
 public class CriaView {
 
     public static LinearLayout imprime(PokedexEntry pokedexEntry, Context context) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        LinearLayout l = new LinearLayout(context);
-        l.setGravity(Gravity.CENTER);
-        l.setOrientation(LinearLayout.HORIZONTAL);
-        l.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, (int) (56 * metrics.density + 0.5f)));
-        ImageView image = new ImageView(context);
-        image.setLayoutParams(new FrameLayout.LayoutParams((int) (56 * metrics.density + 0.5f), (int) (56 * metrics.density + 0.5f)));
-        int resId = context.getResources().getIdentifier("sprite" + String.valueOf(pokedexEntry.getDexId()), "drawable", context.getPackageName());
-        image.setImageResource(resId);
-        l.addView(image);
-        TextView text = new TextView(context);
-        text.setGravity(Gravity.CENTER);
-        text.setText(pokedexEntry.toString());
-        text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-        l.addView(text);
-        return l;
-    }
-
-    public static LinearLayout imprime(Pokemon pokemon, Context context) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        LinearLayout l = new LinearLayout(context);
-        l.setGravity(Gravity.CENTER);
-        l.setOrientation(LinearLayout.HORIZONTAL);
-        l.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, (int) (56 * metrics.density + 0.5f)));
-        ImageView image = new ImageView(context);
-        image.setLayoutParams(new FrameLayout.LayoutParams((int) (56 * metrics.density + 0.5f), (int) (56 * metrics.density + 0.5f)));
-        int resId = context.getResources().getIdentifier("sprite" + String.valueOf(pokemon.getDexId()), "drawable", context.getPackageName());
-        image.setImageResource(resId);
-        l.addView(image);
-        TextView text = new TextView(context);
-        text.setGravity(Gravity.CENTER);
-        text.setText(pokemon.toString());
-        text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-        l.addView(text);
-        return l;
+            DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+            LinearLayout l = new LinearLayout(context);
+            l.setGravity(Gravity.CENTER);
+            l.setOrientation(LinearLayout.HORIZONTAL);
+            l.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, (int) (56 * metrics.density + 0.5f)));
+            ImageView image = new ImageView(context);
+            image.setLayoutParams(new FrameLayout.LayoutParams((int) (56 * metrics.density + 0.5f), (int) (56 * metrics.density + 0.5f)));
+            int resId = context.getResources().getIdentifier("sprite" + String.valueOf(pokedexEntry.getDexId()), "drawable", context.getPackageName());
+            image.setImageResource(resId);
+            l.addView(image);
+            TextView text = new TextView(context);
+            text.setGravity(Gravity.CENTER);
+            text.setText(pokedexEntry.toString());
+            text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+            l.addView(text);
+            return l;
     }
 }

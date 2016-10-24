@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.gabriel.controleev.monsters.PokedexEntry;
 import com.example.gabriel.controleev.monsters.Pokemon;
 
 import java.util.ArrayList;
@@ -78,13 +79,13 @@ public class LocalDataDBHelper extends SQLiteOpenHelper implements ConsultaBanco
         return lista;
     }
 
-    public Pokemon getPokemon(int id, SQLiteDatabase myDataBase) {
+    public PokedexEntry getPokemon(int id, SQLiteDatabase myDataBase) {
         Cursor cursor = myDataBase.rawQuery("select * from pokemon where _id = " + String.valueOf(id),null);
         if (cursor.moveToFirst()) {
                 Pokemon entry = new Pokemon(cursor.getString(cursor.getColumnIndex(KEY_IDENTIFIER)),
                         cursor.getString(cursor.getColumnIndex(KEY_TYPE)),cursor.getInt(cursor.getColumnIndex(KEY_DEX)), cursor.getString(cursor.getColumnIndex(KEY_NAME)), cursor.getInt(cursor.getColumnIndex(KEY_ATT)), cursor.getInt(cursor.getColumnIndex(KEY_DEF))
                         , cursor.getInt(cursor.getColumnIndex(KEY_SPATT)), cursor.getInt(cursor.getColumnIndex(KEY_SPDEF)), cursor.getInt(cursor.getColumnIndex(KEY_SPE)), cursor.getInt(cursor.getColumnIndex(KEY_HP)), cursor.getInt(cursor.getColumnIndex("_id")));
-                return entry;
+                return (PokedexEntry) entry;
         }
         cursor.close();
         return null;

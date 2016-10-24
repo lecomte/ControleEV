@@ -38,7 +38,7 @@ public class AlteraPokemon extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
         LocalDataDBHelper helper = new LocalDataDBHelper(this);
-        pokemon = helper.getPokemon(id, helper.getReadableDatabase());
+        pokemon = (Pokemon) helper.getPokemon(id, helper.getReadableDatabase());
         helper.close();
         setTitle(pokemon.getNickname());
         TextView att = (TextView) findViewById(R.id.attackAltera);
